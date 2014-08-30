@@ -18,6 +18,7 @@ before_script:
   - "echo -e '[mysqld]\\ngtid_mode=ON\\nenforce_gtid_consistency' | sudo tee /etc/mysql/conf.d/gtid.cnf"
   - "sudo ls /usr/bin/mysql*"
   - "sudo /usr/bin/mysqld_safe"
+  - "sudo tail /var/log/*"
   #- "cat /etc/mysql/my.cnf"
   #- "sudo ls /var/ramfs/mysql/"
   #- "sudo cat /var/ramfs/mysql/*.err"
