@@ -1,7 +1,7 @@
 language: python
 python:
   - "3.2"
-  - "3.3"
+#  - "3.3"
 
 before_script:
   # Setup Mysql 5.6 (source: https://github.com/travis-ci/travis-ci/issues/1986)
@@ -15,9 +15,15 @@ before_script:
   - "sudo sed -i'' 's/table_cache/table_open_cache/' /etc/mysql/my.cnf"
   - "sudo sed -i'' 's/log_slow_queries/slow_query_log/' /etc/mysql/my.cnf"
   - "sudo sed -i'' 's/basedir[^=]\\+=.*$/basedir = \\/opt\\/mysql\\/server-5.6/' /etc/mysql/my.cnf"
-  - "sudo /etc/init.d/mysql.server start"
+  - "echo -e '[mysqld]\ngtid_mode=ON\nenforce_gtid_consistency' | sudo tee /etc/mysql/conf.d/gtid.cnf"
+  - "sudo /etc/init.d/mysql.server start || /bin/true"
+  - "cat /etc/mysql/my.cnf"
+  - "ls /opt/mysql/server-5.6/"
+  - "tail /opt/mysql/server-5.6/*.err"
   - mysql --version
   - mysql -e "SELECT VERSION();"
 
 # Fail build
 script: /bin/false
+
+
