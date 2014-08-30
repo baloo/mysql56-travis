@@ -17,6 +17,7 @@ before_script:
   - "sudo sed -i'' 's/basedir[^=]\\+=.*$/basedir = \\/opt\\/mysql\\/server-5.6/' /etc/mysql/my.cnf"
   - "echo -e '[mysqld]\ngtid_mode=ON\nenforce_gtid_consistency' | sudo tee /etc/mysql/conf.d/gtid.cnf"
   - "sudo /etc/init.d/mysql.server start || /bin/true"
+  - "cat /etc/mysql/my.cnf"
   - "ls /opt/mysql/server-5.6/"
   - "tail /opt/mysql/server-5.6/*.err"
   - mysql --version
