@@ -18,8 +18,8 @@ before_script:
   - "echo -e '[mysqld]\\ngtid_mode=ON\\nenforce_gtid_consistency' | sudo tee /etc/mysql/conf.d/gtid.cnf"
   - "sudo /etc/init.d/mysql.server start || /bin/true"
   - "cat /etc/mysql/my.cnf"
-  - "ls /var/ramfs/mysql/"
-  - "cat /var/ramfs/mysql/*.err"
+  - "sudo ls /var/ramfs/mysql/"
+  - "sudo cat /var/ramfs/mysql/*.err"
   - mysql --version
   - mysql -e "SELECT VERSION();"
 
