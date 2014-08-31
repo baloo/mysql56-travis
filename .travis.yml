@@ -26,6 +26,7 @@ before_script:
   - "sudo sed -i'' 's/log_slow_queries/slow_query_log/' /etc/mysql/my.cnf"
   - "sudo sed -i'' 's/basedir[^=]\\+=.*$/basedir = \\/opt\\/mysql\\/server-5.6/' /etc/mysql/my.cnf"
   - "sudo /etc/init.d/mysql start"
+  - "sudo tail -1000 /var/log/syslog"
   - "sudo mysql_upgrade"
   - "sudo /etc/init.d/mysql stop"
   - "echo -e '[mysqld]\\ngtid_mode=ON\\nenforce_gtid_consistency\\nbinlog_format=ROW\\nlog_bin=/tmp/tests-mysql56.log\\nlog_slave_updates' | sudo tee /etc/mysql/conf.d/gtid.cnf"
