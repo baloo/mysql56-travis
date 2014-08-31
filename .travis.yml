@@ -33,6 +33,6 @@ before_script:
   - mysql -e "SELECT VERSION();"
 
 # Fail build
-script: /bin/false
+script: /bin/true
 
 
