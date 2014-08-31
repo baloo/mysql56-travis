@@ -9,6 +9,8 @@ cache:
 
 before_script:
   # Setup Mysql 5.6 (source: https://github.com/travis-ci/travis-ci/issues/1986)
+  - "cat /etc/apt/sources.list"
+  - "cat /etc/apt/sources.list.d/*"
   - "sudo apt-cache search mysql-server"
   - "sudo apt-cache policy mysql-server"
   #- "sudo apt-get remove mysql-common mysql-server-5.5 mysql-server-core-5.5 mysql-client-5.5 mysql-client-core-5.5"
