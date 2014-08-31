@@ -19,7 +19,6 @@ before_script:
   - "sudo rm -rf /var/ramfs/mysql/"
   - "sudo mkdir /var/ramfs/mysql/"
   - "sudo chown mysql: /var/ramfs/mysql/"
-  - "mysql_install_db --defaults-file=/etc/mysql/my.cnf"
 
   #- "mkdir -p .mysql"
   #- "test -f .mysql/mysql-5.6.14.deb || wget -O .mysql/mysql-5.6.14.deb http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.14-debian6.0-x86_64.deb/from/http://cdn.mysql.com/"
@@ -28,7 +27,10 @@ before_script:
 
   - "sudo sed -i'' 's/table_cache/table_open_cache/' /etc/mysql/my.cnf"
   - "sudo sed -i'' 's/log_slow_queries/slow_query_log/' /etc/mysql/my.cnf"
-  - "sudo sed -i'' 's/basedir[^=]\\+=.*$/basedir = \\/opt\\/mysql\\/server-5.6/' /etc/mysql/my.cnf"
+
+  - "cat /etc/mysql/my.cnf"
+  - "mysql_install_db --defaults-file=/etc/mysql/my.cnf --basedir=/var/ramfs/mysql --datadir=/var/ramfs/mysql"
+
   - "sudo /etc/init.d/mysql start"
   - "sudo tail -1000 /var/log/syslog"
   - "sudo /etc/init.d/mysql stop"
