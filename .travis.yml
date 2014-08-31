@@ -19,7 +19,7 @@ before_script:
   - "sudo rm -rf /var/ramfs/mysql/"
   - "sudo mkdir /var/ramfs/mysql/"
   - "sudo chown mysql: /var/ramfs/mysql/"
-  - "mysql_install_db"
+  - "mysql_install_db --defaults-file=/etc/mysql/my.cnf"
 
   #- "mkdir -p .mysql"
   #- "test -f .mysql/mysql-5.6.14.deb || wget -O .mysql/mysql-5.6.14.deb http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.14-debian6.0-x86_64.deb/from/http://cdn.mysql.com/"
